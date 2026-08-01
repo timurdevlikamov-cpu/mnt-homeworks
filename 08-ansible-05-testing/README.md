@@ -24,11 +24,14 @@
 
 #### Скриншоты к заданиям Molecule 
 
-1. ![Скрин](screenshots/Task-1.1.1.png)
+1.
+   ![Скрин](screenshots/Task-1.1.1.png)
    ![Скрин](screenshots/Task-1.1.2.png)
-3. ![Скрин](screenshots/Task-1.3.1.png)
+3.
+   ![Скрин](screenshots/Task-1.3.1.png)
    ![Скрин](screenshots/Task-1.3.2.png)
-5. ![Скрин](screenshots/Task-1.5.png)
+5.
+   ![Скрин](screenshots/Task-1.5.png)
 
 ### Tox
 
@@ -44,8 +47,10 @@
 
 #### Скриншоты к заданиям Tox
 
-3. ![Скрин](screenshots/Task-2.3.png)
-6. ![Скрин](screenshots/Task-2.6.png)
+3.
+   ![Скрин](screenshots/Task-2.3.png)
+6.
+   ![Скрин](screenshots/Task-2.6.png)
 
 ## Необязательная часть
 
