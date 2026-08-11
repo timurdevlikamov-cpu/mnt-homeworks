@@ -116,15 +116,15 @@ P.S.: если при запуске некоторые контейнеры б�
     - VictoriaMetrics — Гибрид
     - Nagios — Pull
 7. 
-![screenshots](Task-7.png)
+![Скрин](screenshots/Task-7.png)
 
 
 8. 
-![screenshots](Task-8.png)
+![Скрин](screenshots/Task-8.png)
 
 
 9. 
-![screenshots](Task-9.png)
+![Скрин](screenshots/Task-9.png)
 
 
 ## Дополнительное задание (со звездочкой*) - необязательно к выполнению
