@@ -83,6 +83,7 @@ P.S.: если при запуске некоторые контейнеры б�
 * IOPS
 * inodes 
 * Утилизация ФС
+
 На уровне приложения:
 * HTTP Request Rate
 * HTTP Error Rate
