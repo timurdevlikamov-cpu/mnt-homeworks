@@ -118,8 +118,10 @@ P.S.: если при запуске некоторые контейнеры б�
 7. 
 ![screenshots](Task-7.png)
 
+
 8. 
 ![screenshots](Task-8.png)
+
 
 9. 
 ![screenshots](Task-9.png)
