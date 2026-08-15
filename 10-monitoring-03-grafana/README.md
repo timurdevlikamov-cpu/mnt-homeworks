@@ -47,6 +47,21 @@
 
 Для решения этого задания приведите promql-запросы для выдачи этих метрик, а также скриншот получившейся Dashboard.
 
+#### Решение к заданию 2
+
+**Утилизация CPU (в процентах):** 100 - (avg by (instance) (rate(node_cpu_seconds_total{mode="idle"}[5m])) * 100)
+
+**CPU Load Average (1 / 5 / 15 минут):**
+node_load1
+node_load5
+node_load15
+
+**Количество свободной оперативной памяти (в ГБ):** (node_memory_MemFree_bytes + node_memory_Buffers_bytes + node_memory_Cached_bytes) / 1024 / 1024 / 1024
+
+**Количество места на файловой системе (в процентах):** 100 - ((node_filesystem_avail_bytes{mountpoint="/"} * 100) / node_filesystem_size_bytes{mountpoint="/"})
+
+![Скрин](screenshots/Task-2.png)
+
 ## Задание 3
 
 1. Создайте для каждой Dashboard подходящее правило alert — можно обратиться к первой лекции в блоке «Мониторинг».
