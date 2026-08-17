@@ -44,6 +44,14 @@ Filebeat следует сконфигурировать для отправки
 - docker-compose манифест (если вы не использовали директорию help);
 - ваши yml-конфигурации для стека (если вы не использовали директорию help).
 
+### Решение к заданию 1
+![Скрин](screenshots/Task-1.1.png)
+![Скрин](screenshots/Task-1.2.png)
+
+[filebeat](filebeat.yml)
+[logstash](logstash.conf)
+[docker-compose](docker-compose.yml)
+
 ## Задание 2
 
 Перейдите в меню [создания index-patterns  в kibana](http://localhost:5601/app/management/kibana/indexPatterns/create) и создайте несколько index-patterns из имеющихся.
