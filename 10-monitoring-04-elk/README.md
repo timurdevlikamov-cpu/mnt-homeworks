@@ -49,8 +49,11 @@ Filebeat следует сконфигурировать для отправки
 ![Скрин](screenshots/Task-1.2.png)
 
 [filebeat](filebeat.yml)
+
 [logstash](logstash.conf)
+
 [docker-compose](docker-compose.yml)
+
 
 ## Задание 2
 
