@@ -1,0 +1,83 @@
+services:
+  elasticsearch-hot:
+    image: docker.elastic.co/elasticsearch/elasticsearch:9.5.1
+    container_name: es-hot
+    environment:
+      #- discovery.type=single-node
+      - node.name=es-hot
+      #- node.roles=master,data_hot
+      - node.roles=master,data
+      - cluster.initial_master_nodes=es-hot,es-warm
+      - discovery.seed_hosts=es-warm 
+      - xpack.security.enabled=false
+      - xpack.security.http.ssl.enabled=false
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ports:
+      - "9200:9200"
+    deploy:
+      resources:
+        limits:
+          memory: 2gb
+    volumes:
+      - es-hot-data:/usr/share/elasticsearch/data
+
+  elasticsearch-warm:
+    image: docker.elastic.co/elasticsearch/elasticsearch:9.5.1
+    container_name: es-warm
+    environment:
+      #- discovery.type=single-node
+      - node.name=es-warm
+      #- node.roles=master,data_warm
+      - node.roles=master,data
+      - cluster.initial_master_nodes=es-hot,es-warm
+      - discovery.seed_hosts=es-hot
+      - xpack.security.enabled=false
+      - xpack.security.http.ssl.enabled=false
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    depends_on:
+      - elasticsearch-hot
+    deploy:
+      resources:
+        limits:
+          memory: 2gb
+    volumes:
+      - es-warm-data:/usr/share/elasticsearch/data
+
+  logstash:
+    image: docker.elastic.co/logstash/logstash:9.5.1
+    container_name: logstash
+    environment:
+      - "LS_JAVA_OPTS=-Xms256m -Xmx256m"
+    volumes:
+      - ./logstash-config/logstash.conf:/usr/share/logstash/pipeline/logstash.conf:ro
+    ports:
+      - "5044:5044"
+    depends_on:
+      - elasticsearch-hot
+    
+  kibana:
+    image: docker.elastic.co/kibana/kibana:9.5.1
+    container_name: kibana
+    ports:
+      - "5601:5601"
+    environment:
+      - ELASTICSEARCH_HOSTS=http://elasticsearch-hot:9200
+      - xpack.security.enabled=false
+    depends_on:
+      - elasticsearch-hot    
+
+  filebeat:
+    image: docker.elastic.co/beats/filebeat:9.5.1
+    container_name: filebeat
+    user: root
+    command: ["filebeat", "-e", "--strict.perms=false"]
+    volumes:
+      - ./filebeat-config/filebeat.yml:/usr/share/filebeat/filebeat.yml:ro
+      - /var/lib/docker/containers:/var/lib/docker/containers:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    depends_on:
+      - logstash
+
+volumes:
+  es-hot-data:
+  es-warm-data:
